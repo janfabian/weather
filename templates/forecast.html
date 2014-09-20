@@ -1,13 +1,13 @@
 <div class="medium-3 columns text-center day-forecast">
-    <p class="date"><strong><% print(_.capitalize(dateFormatted)) %></strong><br />
-    <span class="small"><%= date %></span></p>
+    <p class="date"><strong><% print(_.capitalize(dateWord)) %></strong><br />
+    <span class="small"><% print(_.sprintf(dateFormat, dateObj.getDate(), dateObj.getMonth() + 1, dateObj.getFullYear())) %></span></p>
     <img src="<%=weatherIconUrl[0].value%>" class="icon" />
     <div class="temp">
         <p class="cels"><%= tempMaxC %>° / <%= tempMinC %>°</p>
         <p class="fahr"><%= tempMaxF %>° / <%= tempMinF %>°</p>
     </div>
     <div class="wind">
-        <p class="kmh"><%= windspeedKmph %> km/h</p>
-        <p class="mileh"><%= windspeedKmph %> miles</p>
+        <p class="kmh"><%= windspeedKmph %> <%= units.kmh %></p>
+        <p class="mileh"><%= windspeedKmph %> <%= units.miles %></p>
     </div>
 </div>

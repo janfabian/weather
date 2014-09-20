@@ -8,5 +8,10 @@ define({
         saturday: 'sobota',
         sunday: 'neděle'
     },
+    units: {
+        miles: 'mil/h',
+        kmh: 'km/h'
+    },
+    dateFormat: '%d.%d.%d',
     enter_city_label: 'Napište název města nebo země'
 });

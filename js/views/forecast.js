@@ -2,8 +2,9 @@ define(['jquery',
     'underscore.mixed',
     'backbone',
     'text!templates/forecast.html',
-    'models/config'
-], function ($, _, Backbone, ForecastTemplate, config) {
+    'models/config',
+    'i18n!nls/labels'
+], function ($, _, Backbone, ForecastTemplate, config, labels) {
 
     return Backbone.View.extend({
         template: _.template(ForecastTemplate),
@@ -17,7 +18,7 @@ define(['jquery',
             this.$('.temp p.' + config.get('tempUnits') + ', .wind p.' + config.get('speedUnits')).removeClass('hide');
         },
         render: function () {
-            this.$el.html(this.template(this.model.toJSON()));
+            this.$el.html(this.template(_.extend(this.model.toJSON(), labels)));
             this.rewriteUnits();
             return this;
         }
