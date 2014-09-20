@@ -9,7 +9,9 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
             google.maps.event.addListener(this.autocomplete, 'place_changed', _.bind(this.cityChange, this));
         },
         cityChange: function () {
-            Backbone.history.navigate('weather/' + this.autocomplete.getPlace().name);
+            Backbone.history.navigate('weather/' + this.autocomplete.getPlace().name, {
+                trigger: true
+            });
         }
     });
 
