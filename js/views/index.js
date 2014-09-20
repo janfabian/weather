@@ -5,23 +5,21 @@ define([
     'text!templates/index.html',
     'views/search',
     'views/forecast',
-    'i18n!nls/labels'
-], function ($, _, Backbone, IndexTemplate, SearchView, ForecastView, labels) {
+    'i18n!nls/labels',
+    'models/config'
+], function ($, _, Backbone, IndexTemplate, SearchView, ForecastView, labels, config) {
 
     return Backbone.View.extend({
         initialize: function (app) {
             this.forecasts = app.forecasts;
+            this.router = app.router;
+
             this.listenTo(this.forecasts, 'add', this.displayOne);
             this.listenTo(this.forecasts, 'remove', this.removeOne);
 
             this.listenTo(app.router, 'route:weather', this.rewriteCity);
-            // url opened already with hash
-            if (app.router.weatherQuery) {
-                _.defer(_.bind(function () {
-                    this.rewriteCity(app.router.weatherQuery);
-                }, this));
-            }
         },
+
         template: _.template(IndexTemplate),
         el: '#container',
         displayOne: function (f) {
@@ -38,6 +36,10 @@ define([
         },
         render: function () {
             this.$el.html(this.template(labels));
+            // url opened already with hash
+            if (this.router.weatherQuery) {
+                this.rewriteCity(this.router.weatherQuery);
+            }
             new SearchView().render();
         }
     });
