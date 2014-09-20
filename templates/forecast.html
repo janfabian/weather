@@ -2,5 +2,12 @@
     <p class="date"><strong><% print(_.capitalize(dateFormatted)) %></strong><br />
     <span class="small"><%= date %></span></p>
     <img src="<%=weatherIconUrl[0].value%>" class="icon" />
-    <p><%= tempMaxC %> / <%= tempMinC %></p>
+    <div class="temp">
+        <p class="cels"><%= tempMaxC %>° / <%= tempMinC %>°</p>
+        <p class="fahr"><%= tempMaxF %>° / <%= tempMinF %>°</p>
+    </div>
+    <div class="wind">
+        <p class="kmh"><%= windspeedKmph %> km/h</p>
+        <p class="mileh"><%= windspeedKmph %> miles</p>
+    </div>
 </div>

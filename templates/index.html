@@ -1,7 +1,18 @@
 <h1 class="headline" id="city">STRV weather forecast</h1>
 <input id="autocomplete" placeholder="<%=enter_city_label%>" type="text"></input>
 <div class="row">
-    <div class="column medium-5 last"><span class="small">°C/°F</span><span class="small">km/h</span></div>
+    <div class="columns">
+        <div class="controls medium-3">
+            <div class="group">
+                <div id="kmh" data-key="speedUnits" data-val="kmh">km/h</div>
+                <div id="mileh" data-key="speedUnits" data-val="mileh">m/h</div>
+            </div>
+            <div class="group">
+                <div id="cels" data-key="tempUnits" data-val="cels">°C</div>
+                <div id="fahr" data-key="tempUnits" data-val="fahr">°F</div>
+            </div>
+        </div>
+    </div>
 </div>
 <div id="week-forecast" class="row">
 

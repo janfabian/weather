@@ -10,7 +10,7 @@ define(['jquery', 'underscore', 'backbone', 'models/api', 'models/forecast'], fu
                 format: 'json',
                 num_of_days: 5
             });
-            Backbone.Collection.prototype.fetch.apply(this, Array.prototype.slice.call(arguments));
+            return Backbone.Collection.prototype.fetch.apply(this, Array.prototype.slice.call(arguments));
         },
         parse: function(response) {
             return response.data.weather;

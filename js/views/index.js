@@ -16,8 +16,10 @@ define([
 
             this.listenTo(this.forecasts, 'add', this.displayOne);
             this.listenTo(this.forecasts, 'remove', this.removeOne);
+            this.listenTo(this.router, 'route:weather', this.rewriteCity);
 
-            this.listenTo(app.router, 'route:weather', this.rewriteCity);
+            this.listenTo(config, 'change:speedUnits', this.rewriteUnits);
+            this.listenTo(config, 'change:tempUnits', this.rewriteUnits);
         },
 
         template: _.template(IndexTemplate),
@@ -34,12 +36,28 @@ define([
         rewriteCity: function (q) {
             this.$('#city').html(q);
         },
+        events: {
+            'click #cels': 'writeConfig',
+            'click #fahr': 'writeConfig',
+            'click #kmh': 'writeConfig',
+            'click #mileh': 'writeConfig'
+        },
+        writeConfig: function(e) {
+            var d = $(e.target).data();
+            config.set(d.key, d.val);
+        },
+        rewriteUnits: function() {
+            this.$('.controls .active').removeClass('active');
+            this.$('.controls #' + config.get('speedUnits')).addClass('active');
+            this.$('.controls #' + config.get('tempUnits')).addClass('active');
+        },
         render: function () {
             this.$el.html(this.template(labels));
             // url opened already with hash
             if (this.router.weatherQuery) {
                 this.rewriteCity(this.router.weatherQuery);
             }
+            this.rewriteUnits();
             new SearchView().render();
         }
     });
