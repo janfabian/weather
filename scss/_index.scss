@@ -1,0 +1,21 @@
+h1 {
+    margin: 1em 0;
+    text-align: center;
+}
+
+p.date {
+    line-height: 1em;
+    margin-bottom: 0.4em;
+}
+
+#week-forecast {
+    padding: 1em 0 !important;
+}
+
+.small {
+    font-size: 0.7em;
+}
+
+.icon {
+    @include border-radius(10px);
+}
