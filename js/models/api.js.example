@@ -1,3 +1,4 @@
 define([], {
-    google: ''
+    google: '',
+    weather: ''
 });
