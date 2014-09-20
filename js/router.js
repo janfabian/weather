@@ -1,13 +1,39 @@
-define(['jquery', 'underscore', 'backbone', 'views/index', 'views/search'], function ($, _, Backbone, IndexView, SearchView) {
-
+define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
+    var setLanguage = function (language) {
+        return function () {
+            var locale = localStorage.getItem('locale');
+            if (locale !== language) {
+                localStorage.setItem('locale', language);
+                Backbone.history.history.back();
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+            }
+        };
+    };
     var Router = Backbone.Router.extend({
         routes: {
             '': 'home',
-            'weather/:query': 'weather'
+            'weather/:query': 'weather',
+            'cs': 'cs',
+            'en': 'en'
+        },
+        initialize: function (app) {
+            this.forecasts = app.forecasts;
         },
         home: function () {},
-        search: function (query) {}
+        weather: function (query) {
+            this.weatherQuery = query;
+            this.forecasts.fetch({
+                data: $.param({
+                    q: query
+                }),
+                remove: true
+            });
+        },
+        en: setLanguage('en-us'),
+        cs: setLanguage('cs-cz')
     });
 
-    return new Router();
+    return Router;
 });
