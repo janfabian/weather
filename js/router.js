@@ -4,10 +4,8 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
             var locale = localStorage.getItem('locale');
             if (locale !== language) {
                 localStorage.setItem('locale', language);
-                Backbone.history.history.back();
-                setTimeout(function () {
-                    location.reload();
-                }, 1000);
+                Backbone.history.history.go(-1);
+                window.location.reload();
             }
         };
     };

@@ -1,8 +1,15 @@
-<h1 class="headline" id="city">STRV weather forecast</h1>
+<div class="row">
+    <div class="columns small">
+        <a href="#cs">cz</a>&nbsp;/&nbsp;<a href="#en">en</a>
+    </div>
+</div>
 <input id="autocomplete" placeholder="<%=enter_city_label%>" type="text"></input>
 <div class="row">
-    <div class="columns">
-        <div class="controls medium-3">
+    <div class="medium-8 columns">
+        <h1 class="headline" id="city">STRV weather forecast</h1>
+    </div>
+    <div class="medium-4 columns">
+        <div class="controls">
             <div class="group">
                 <div id="kmh" data-key="speedUnits" data-val="kmh"><%= units.kmh %></div>
                 <div id="mileh" data-key="speedUnits" data-val="mileh"><%= units.miles %></div>

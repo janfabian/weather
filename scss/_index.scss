@@ -1,6 +1,15 @@
+
 h1 {
-    margin: 1em 0;
-    text-align: center;
+    margin: 0 0 0.5em;
+    float: left;
+}
+
+#container {
+    margin-top: 1em;
+}
+
+input {
+    margin-top: 0.5em !important;
 }
 
 p.date {
@@ -14,6 +23,10 @@ p.date {
 
 .small {
     font-size: 0.7em;
+}
+
+.grey {
+    color: rgba(black, .6);
 }
 
 .controls {
@@ -40,4 +53,18 @@ p.date {
 
 .icon {
     @include border-radius(10px);
+    margin-bottom: 1em;
+}
+.day-forecast {
+    margin-bottom: 2em;
+}
+
+.temp, .wind {
+    & p {
+        margin-bottom: 0em;
+    }
+}
+
+.wind p {
+    font-size: 0.8em;
 }
