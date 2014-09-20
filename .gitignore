@@ -1,5 +1,6 @@
 .DS_Store
 .sass-cache
-bower_components
 css
 js/models/api.js
+js/libs/*
+!js/libs/custom
