@@ -6,6 +6,7 @@
     "curly": true,
     "eqeqeq": true,
     "globals": {
-        "define": true
+        "define": true,
+        "require": true
     }
 }
